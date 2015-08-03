@@ -65,7 +65,7 @@ for(var i = 0; i <subdpWwitch.length; i++){
     }
 }
 //右键菜单
-//webDasktop.rightClickMenuShow(rClickMenu);
+webDasktop.rightClickMenuShow(rClickMenu);
 webDasktop.rightClickMenuHidden(rClickMenu);
 
 //时钟
