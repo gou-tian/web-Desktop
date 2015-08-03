@@ -10,6 +10,8 @@
  * 修复缓冲运动中的Bug及不透明度计算公式Bug 23:15
  * (2015-08-02)
  * 修复拖拽Bug，使其能个复用 22：12
+ * (2015-08-03)
+ * 加入时间函数，实现数字时钟功能 22:14
  */
 
 //Public function.
@@ -129,6 +131,25 @@ var webDesktopPublic = {
                 fn && fn.call(obj);
             }
         },14);
+    },
+    //时钟
+    clock : function(obj){
+        var gtTime = new Date;
+        var gtHours = gtTime.getHours(); //时
+        var gtMinute = gtTime.getMinutes(); //分
+        var gtSecond = gtTime.getSeconds(); //秒
+        var timeObj = obj.children;
+        var str = zeroize(gtHours) + ':' + zeroize(gtMinute) + ':' + zeroize(gtSecond);
+        for(var i = 0; i < str.length; i++){
+            if(str.charAt(i) == ':'){
+                timeObj[i].src = 'image/time-img/colon.JPG';
+            }else{
+                timeObj[i].src = 'image/time-img/' + str.charAt(i) + '.JPG';
+            }
+        }
+        function zeroize(obj){
+            return obj < 10 ? '0' + obj : '' + obj;
+        }
     }
 };
 //鼠标移入放大元素
@@ -182,6 +203,22 @@ var webDasktop = {
                     })
                 });
             }
+        }
+    },
+    //右键菜单(显示)
+    rightClickMenuShow : function(obj){
+        document.oncontextmenu = function(e){
+            obj.style.display = 'block';
+            var ev = e || event;
+            obj.style.top = ev.clientY + 'px';
+            obj.style.left = ev.clientX + 'px';
+            return false;
+        }
+    },
+    //右键菜单(隐藏)hidden
+    rightClickMenuHidden : function(obj){
+        document.onclick = function(){
+            obj.style.display = 'none';
         }
     }
 };

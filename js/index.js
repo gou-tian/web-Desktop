@@ -25,6 +25,14 @@ var ppeInfoClose = document.getElementById('J-personal-close');
 var dpWwitch = document.getElementById('J-desktop-switching');
 var subdpWwitch = dpWwitch.children;
 
+//右键菜单
+var rClickMenu = document.getElementById('J-right-click-menu');
+
+//时钟
+var iClock = document.getElementById('J-clock');
+
+
+
 //侧边栏
 webDasktop.webDesktopMouse(eleMouse);
 //桌面内容
@@ -32,7 +40,6 @@ function desktopSwich(obj){
     for(var i = 0; i < obj.length; i++){
         obj[i].style.top = i * 160 + 'px';
         webDesktopPublic.drag(obj[i],obj);
-        console.log(1)
     }
 
 }
@@ -57,3 +64,16 @@ for(var i = 0; i <subdpWwitch.length; i++){
         desktopSwich(sdSub);
     }
 }
+//右键菜单
+//webDasktop.rightClickMenuShow(rClickMenu);
+webDasktop.rightClickMenuHidden(rClickMenu);
+
+//时钟
+webDesktopPublic.clock(iClock);
+setInterval(function(){
+    webDesktopPublic.clock(iClock);
+},1000);
+
+
+//调试
+

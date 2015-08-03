@@ -280,3 +280,38 @@ input,text { outline: none;}
 .personal-work-min p { margin: 8px 10px 0 0;}
 .personal-skill-min p { margin: 0 0 10px 8px;}
 .personal-experience-min p { margin: 0 8px 10px 0;}
+    /* 右键菜单 */
+.right-click-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    background-color: #d3d3d3;
+    display: none;
+}
+.right-click-menu a {
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    color: #000;
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+}
+.right-click-menu-borderBot { border-bottom: 1px solid #fff;}
+.right-click-menu a:hover {
+    border-top: 1px solid #0c76a9;
+    border-bottom: 1px solid #0c76a9;
+    background-color: rgba(100,149,237,0.75);
+    color: #fff;
+}
+/* 时钟 */
+.clock {
+    position: absolute;
+    top: 50px;
+    right: 280px;
+    width: 200px;
+}
+.clock img {
+    width: 20px;
+}
