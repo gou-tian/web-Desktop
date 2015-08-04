@@ -2,6 +2,9 @@
  * Created by gousky on 2015/8/1.
  */
 //变量声明
+var oPrs = document.getElementById('J-progress-bar');
+var oWarp = document.getElementById('J-warp');
+
 var oldWidth,
     oldHeight; //鼠标移入元素时保存当前属性值
 var obj1Top = null;
@@ -31,7 +34,7 @@ var rClickMenu = document.getElementById('J-right-click-menu');
 //时钟
 var iClock = document.getElementById('J-clock');
 
-
+webDasktop.progressBar(oPrs,oWarp);
 
 //侧边栏
 webDasktop.webDesktopMouse(eleMouse);

@@ -23,7 +23,27 @@ input,text { outline: none;}
     position: absolute;
     width: 100%;
     height: 100%;
+    display: none;
     background: url("../image/image-bg/bg-2.jpg") no-repeat center top 100%/100%;
+}
+.progress-bar {
+    position: relative;
+    width: 500px;
+    height: 40px;
+    margin: 15% auto 0;
+    border: 1px solid #0c76a9;
+}
+.progress-bar-num {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.progress-bar-bg {
+    width: 10%;
+    height: 100%;
+    background-color: #1e90ff;
 }
 /* 头部 */
 .web-top {

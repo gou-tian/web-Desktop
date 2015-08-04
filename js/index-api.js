@@ -13,6 +13,8 @@
  * (2015-08-03)
  * 加入时间函数，实现数字时钟功能 22:14
  * 加入鼠标右键菜单,阻止系统默认事件，并实现点击空白处关闭  21:05
+ * (2015-08-04)
+ * 加入页面加载进度条 21：15
  */
 
 //Public function.
@@ -153,7 +155,7 @@ var webDesktopPublic = {
         }
     }
 };
-//鼠标移入放大元素
+//Private function
 var webDasktop = {
     //鼠标移入
     webDesktopMouse : function (obj){
@@ -220,6 +222,29 @@ var webDasktop = {
     rightClickMenuHidden : function(obj){
         document.onclick = function(){
             obj.style.display = 'none';
+        }
+    },
+    //首页页面加载进度条
+    progressBar : function(obj,showObj){
+        var num = 0;
+        var iLen = showObj.children.length;
+        for(var i = 0 ; i < iLen; i++){
+            (function(i){
+                num++;
+                var nBar = parseInt(num / iLen * 100);
+                if(nBar > 50){
+                    obj.children[0].style.color = '#fff';
+                }
+                obj.children[0].innerHTML = nBar + '%';
+                console.log(obj.children[0].innerHTML);
+                obj.children[1].style.width = nBar + '%';
+                setTimeout(function(){
+                    if(num == iLen){
+                        showObj.style.display = 'block';
+                        obj.style.display = 'none';
+                    }
+                },1000)
+            })(i);
         }
     }
 };

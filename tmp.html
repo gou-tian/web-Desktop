@@ -4,22 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title></title>
+    <style>
+        .clock {
+            display: none;
+        }
+        .demo {
+            position: relative;
+            width: 200px;
+            height: 12px;
+            margin: 100px auto 0;
+            border: 1px solid #0c76a9;
+        }
+        .demo-bar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 100%;
+            text-align: center;
+            font-size: 12px;
+        }
+        .demo-bg {
+            width: 10%;
+            height: 100%;
+            background-color: #1e90ff;
+        }
+    </style>
 </head>
 <body>
+<div id="demo" class="demo">
+    <div class="demo-bar">0%</div>
+    <div class="demo-bg"></div>
+</div>
 <div class="clock" id="J-clock">
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
-    <img src="image/time-img/0.JPG" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-01.jpg" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-02.jpg" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-03.jpg" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-04.jpg" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-05.jpg" alt />
+    <img src="https://raw.githubusercontent.com/gou-tian/dome-javascript-basics/master/pic/06-06.jpg" alt />
 </div>
 <script src="js/index-api.js"></script>
 <script>
+    var oDmeo = document.getElementById('demo');
     var iClock = document.getElementById('J-clock');
-    webDesktopPublic.clock(iClock);
+    var iLen = iClock.children.length;
+
+    var num  = 0;
+
+    for(var i  = 0; i < iLen; i++){
+        (function(i){
+            var oImg = new Image();
+            oImg.onload = function(){
+                num++;
+                var nBor = parseInt(num / iLen *100);
+                if(nBor > 50){
+                    oDmeo.children[0].style.color = '#fff';
+                }
+                oDmeo.children[0].innerHTML = nBor + '%';
+                oDmeo.children[1].style.width = nBor + '%';
+                console.log(nBor);
+                /*setTimeout(function(){
+                    if(num == iLen){
+                        iClock.style.display = 'block';
+                        oDmeo.style.display = 'none';
+                    }
+                },800)*/
+            };
+            oImg.src = iClock.children[i].src;
+        })(i);
+    }
 </script>
 </body>
 </html>
